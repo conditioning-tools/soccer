@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>フィジカルトレーニング資料 | サッカー部</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gd: #1B4332; --gm: #2D6A4F; --gl: #40916C;
+    --gp: #D8F3DC; --acc: #52B788;
+    --white: #FFFFFF; --off: #F8FAF9;
+    --blk: #111111; --gray: #555555;
+    --lgray: #EEEEEE; --bdr: #DDDDDD;
+  }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--off); color: var(--blk); line-height: 1.65; }
+
+  .site-header { background: var(--gd); position: relative; overflow: hidden; }
+  .site-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 100%; border-left: 1.5px solid rgba(255,255,255,0.06); border-right: 1.5px solid rgba(255,255,255,0.06); }
+  .site-header::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 72px; height: 72px; border: 1.5px solid rgba(255,255,255,0.06); border-radius: 50%; }
+  .header-inner { position: relative; z-index: 1; padding: 24px 20px 20px; }
+  .header-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: var(--acc); margin-bottom: 6px; }
+  .header-title { font-size: 20px; font-weight: 900; color: var(--white); line-height: 1.3; }
+  .header-sub { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 6px; }
+  .chapter-nav { background: var(--gm); padding: 0 16px; display: flex; overflow-x: auto; }
+  .chapter-nav a { display: block; padding: 11px 14px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.65); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .chapter-nav a:hover { color: #fff; border-bottom-color: var(--acc); }
+
+  .container { max-width: 620px; margin: 0 auto; padding: 0 16px 64px; }
+
+  .section { margin-top: 32px; }
+  .section-hd { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 2px solid var(--gp); }
+  .sec-num { width: 38px; height: 38px; background: var(--gd); color: #fff; font-size: 14px; font-weight: 900; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .sec-title { font-size: 19px; font-weight: 900; color: var(--gd); line-height: 1.25; }
+  .sec-sub { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+  .intro { background: var(--white); border-left: 3px solid var(--gl); padding: 12px 14px; margin-bottom: 16px; font-size: 13px; color: var(--gray); line-height: 1.75; border-radius: 0 6px 6px 0; border: 1px solid var(--bdr); border-left: 3px solid var(--gl); }
+  .intro strong { color: var(--blk); font-weight: 700; }
+
+  .diff-wrap { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+  .diff-card { background: var(--white); border: 1px solid var(--bdr); border-radius: 8px; overflow: hidden; }
+  .diff-hd { padding: 9px 14px; }
+  .diff-hd.dark { background: var(--gd); }
+  .diff-hd.light { background: var(--gl); }
+  .diff-hd-label { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: 0.04em; }
+  .diff-body { padding: 12px 14px; font-size: 13px; color: var(--gray); line-height: 1.75; }
+  .diff-body strong { color: var(--blk); font-weight: 700; }
+
+  .train-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; }
+  .train-card { background: var(--white); border: 1px solid var(--bdr); border-radius: 8px; overflow: hidden; }
+  .train-hd { background: var(--gp); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
+  .train-name { font-size: 14px; font-weight: 700; color: var(--gd); }
+  .train-tag { font-size: 10px; font-weight: 700; color: var(--gm); background: rgba(45,106,79,0.15); padding: 2px 8px; border-radius: 99px; white-space: nowrap; margin-left: 8px; }
+  .train-body { padding: 12px 14px; }
+  .train-point-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--acc); margin-bottom: 4px; }
+  .train-points { list-style: none; margin-bottom: 10px; }
+  .train-points li { font-size: 13px; color: var(--gray); padding: 2px 0 2px 14px; position: relative; line-height: 1.65; }
+  .train-points li::before { content: '·'; position: absolute; left: 4px; color: var(--acc); font-size: 16px; line-height: 1.3; }
+
+  .diagram-wrap { background: var(--off); border: 1px solid var(--bdr); border-radius: 6px; padding: 10px; margin-bottom: 10px; }
+  .diagram-label { font-size: 10px; font-weight: 700; color: var(--gray); letter-spacing: 0.06em; margin-bottom: 6px; }
+
+  .yt-link { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; background: #FFF5F5; border: 1px solid #FFD5D5; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: 700; color: #CC0000; }
+  .yt-link::before { content: '▶'; font-size: 9px; }
+
+  .pos-table { width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: 13px; background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--bdr); }
+  .pos-table th { background: var(--gd); color: #fff; padding: 9px 13px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .pos-table td { padding: 10px 13px; border-bottom: 1px solid var(--lgray); color: var(--gray); line-height: 1.6; vertical-align: top; }
+  .pos-table td:first-child { font-weight: 700; color: var(--gd); white-space: nowrap; width: 80px; }
+  .pos-table tr:last-child td { border-bottom: none; }
+  .pos-table tr:nth-child(even) { background: var(--off); }
+  .pos-ref { font-size: 10px; color: var(--gray); margin-top: 6px; margin-bottom: 16px; }
+
+  .mech-box { background: var(--white); border: 1px solid var(--bdr); border-radius: 8px; padding: 14px; margin-bottom: 14px; }
+  .mech-title { font-size: 12px; font-weight: 700; color: var(--gd); margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--gp); letter-spacing: 0.04em; }
+  .mech-text { font-size: 13px; color: var(--gray); line-height: 1.8; }
+  .mech-text strong { color: var(--blk); font-weight: 700; }
+
+  .cm-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+  .cm-item { background: var(--white); border: 1px solid var(--bdr); border-radius: 8px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; }
+  .cm-icon { width: 30px; height: 30px; background: var(--gp); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .cm-title { font-size: 13px; font-weight: 700; color: var(--blk); margin-bottom: 3px; }
+  .cm-desc { font-size: 12px; color: var(--gray); line-height: 1.7; }
+
+  .ref-box { background: var(--lgray); border-radius: 6px; padding: 10px 12px; margin-top: 14px; }
+  .ref-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 4px; }
+  .ref-link { display: block; font-size: 11px; color: var(--gm); text-decoration: none; line-height: 1.8; word-break: break-all; }
+
+  .divider { height: 1px; background: var(--gp); margin: 28px 0; }
+
+  .overview-box { background: var(--white); border: 1px solid var(--bdr); border-radius: 8px; padding: 18px; margin-top: 24px; margin-bottom: 4px; }
+  .overview-title { font-size: 12px; font-weight: 700; color: var(--gd); letter-spacing: 0.08em; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--gp); }
+  .overview-text { font-size: 13px; color: var(--gray); line-height: 1.85; }
+  .overview-text strong { color: var(--blk); font-weight: 700; }
+
+  footer { background: var(--gd); padding: 18px; text-align: center; font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-label">PHYSICAL TRAINING</div>
+    <div class="header-title">フィジカルトレーニング資料</div>
+    <div class="header-sub">2026.06 ／ 川越コーチ・涼太朗コーチ</div>
+  </div>
+  <nav class="chapter-nav">
+    <a href="#step">① ステップワーク</a>
+    <a href="#agility">② アジリティー</a>
+    <a href="#cramp">③ ふくらはぎが攣る原因と対策</a>
+  </nav>
+</header>
+
+
+<div class="container">
+  <div class="overview-box">
+    <div class="overview-title">この資料について</div>
+    <div class="overview-text">
+      この資料は、サッカーのパフォーマンス向上に直結する3つのテーマをまとめたものです。<br><br>
+      <strong>① ステップワーク</strong>では足の動かし方の基礎を、<strong>② アジリティー</strong>では試合の場面・ポジション別に必要な動きの種類と練習方法を紹介します。ポジション別の特性は研究データをもとに整理していますが、どのポジションでもあらゆる動きを取り入れることで身体能力は向上します。特定の動きに偏りすぎず、幅広く取り組むことが大切です。<br><br>
+      <strong>③ ふくらはぎが攣る原因と対策</strong>では、「練習では攣らないのに試合だけ攣る」という現象のメカニズムと、具体的な予防策を解説します。
+    </div>
+  </div>
+
+  <!-- ① ステップワーク -->
+  <section class="section" id="step">
+    <div class="section-hd">
+      <div class="sec-num">1</div>
+      <div>
+        <div class="sec-title">ステップワーク</div>
+        <div class="sec-sub">足の動かし方の基礎</div>
+      </div>
+    </div>
+
+    <div class="diff-wrap">
+      <div class="diff-card">
+        <div class="diff-hd dark"><div class="diff-hd-label">ステップワーク</div></div>
+        <div class="diff-body"><strong>動作の「型」を身につける練習。</strong><br>ラダーやマーカーを使い、正確な足の運び方をくり返す。スピードより正確さが先。</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-hd light"><div class="diff-hd-label">アジリティー（②で詳しく）</div></div>
+        <div class="diff-body"><strong>相手・ボール・状況に反応して動く能力。</strong><br>ステップワークで身につけた動作を、試合の場面で即座に使う応用段階。</div>
+      </div>
+    </div>
+
+    <div class="train-list">
+
+      <div class="train-card">
+        <div class="train-hd"><div class="train-name">ラダー ― シングルラン</div><div class="train-tag">全員</div></div>
+        <div class="train-body">
+          <div class="diagram-wrap">
+            <div class="diagram-label">動作イメージ</div>
+            <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;">
+              <rect x="20" y="28" width="220" height="34" rx="2" fill="none" stroke="#2D6A4F" stroke-width="2"/>
+              <line x1="20" y1="28" x2="20" y2="62" stroke="#2D6A4F" stroke-width="2"/>
+              <line x1="57" y1="28" x2="57" y2="62" stroke="#2D6A4F" stroke-width="1.5"/>
+              <line x1="94" y1="28" x2="94" y2="62" stroke="#2D6A4F" stroke-width="1.5"/>
+              <line x1="131" y1="28" x2="131" y2="62" stroke="#2D6A4F" stroke-width="1.5"/>
+              <line x1="168" y1="28" x2="168" y2="62" stroke="#2D6A4F" stroke-width="1.5"/>
+              <line x1="205" y1="28" x2="205" y2="62" stroke="#2D6A4F" stroke-width="1.5"/>
+              <line x1="240" y1="28" x2="240" y2="62" stroke="#2D6A4F" stroke-width="2"/>
+              <ellipse cx="38" cy="37" rx="5" ry="3.5" fill="#52B788" opacity="0.8"/>
+              <ellipse cx="38" cy="53" rx="5" ry="3.5" fill="#52B788" opacity="0.4"/>
+              <ellipse cx="75" cy="37" rx="5" ry="3.5" fill="#52B788" opacity="0.8"/>
+              <ellipse cx="75" cy="53" rx="5" ry="3.5" fill="#52B788" opacity="0.4"/>
+              <ellipse cx="112" cy="37" rx="5" ry="3.5" fill="#52B788" opacity="0.5"/>
+              <ellipse cx="112" cy="53" rx="5" ry="3.5" fill="#52B788" opacity="0.2"/>
+              <line x1="258" y1="45" x2="284" y2="45" stroke="#1B4332" stroke-width="2"/>
+              <polygon points="284,40 292,45 284,50" fill="#1B4332"/>
+              <text x="22" y="80" font-size="9" fill="#555" font-family="sans-serif">1マスに両足を入れて前進</text>
+            </svg>
+          </div>
+          <div class="train-point-label">なぜやるのか</div>
+          <ul class="train-points">
+            <li>足の回転数・神経筋の協調性・地面接触時間の短縮を同時に鍛える</li>
+            <li>試合での「素早い足の切り替え」に直結する動作パターンの習得</li>
+          </ul>
+          <div class="train-point-label" style="margin-top:8px;">ポイント</div>
+          <ul class="train-points">
+            <li>1マスずつ丁寧に。慣れたら速さを上げる</li>
+            <li>前足部（母趾球）で軽く接地 ― 踵からドスンと落ちない</li>
+            <li>腕振りも合わせて動かす</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="train-card">
+        <div class="train-hd"><div class="train-name">マーカーステップ ― 前後左右</div><div class="train-tag">全員</div></div>
+        <div class="train-body">
+          <div class="diagram-wrap">
+            <div class="diagram-label">動作イメージ</div>
+            <svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;">
+              <circle cx="150" cy="55" r="7" fill="#2D6A4F"/>
+              <circle cx="85" cy="55" r="7" fill="#40916C"/>
+              <circle cx="215" cy="55" r="7" fill="#40916C"/>
+              <circle cx="150" cy="18" r="7" fill="#40916C"/>
+              <circle cx="150" cy="92" r="7" fill="#40916C"/>
+              <line x1="150" y1="48" x2="150" y2="25" stroke="#52B788" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <polygon points="146,25 150,18 154,25" fill="#52B788"/>
+              <line x1="150" y1="62" x2="150" y2="85" stroke="#52B788" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <polygon points="146,85 150,92 154,85" fill="#52B788"/>
+              <line x1="143" y1="55" x2="92" y2="55" stroke="#52B788" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <polygon points="92,51 85,55 92,59" fill="#52B788"/>
+              <line x1="157" y1="55" x2="208" y2="55" stroke="#52B788" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <polygon points="208,51 215,55 208,59" fill="#52B788"/>
+              <text x="50" y="107" font-size="9" fill="#555" font-family="sans-serif">中心のマーカーから4方向へ素早く動く</text>
+            </svg>
+          </div>
+          <div class="train-point-label">なぜやるのか</div>
+          <ul class="train-points">
+            <li>4方向への素早い動き出しと制動を繰り返すことで、試合の1対1・プレス・カバーの動作基盤を作る</li>
+          </ul>
+          <div class="train-point-label" style="margin-top:8px;">セッティング / ポイント</div>
+          <ul class="train-points">
+            <li>マーカー間の距離：1〜1.5m（慣れたら2mに広げる）</li>
+            <li>重心を低く保ったまま移動</li>
+            <li>止まる瞬間は<strong>内側の足</strong>で踏み込んで制動・踏み替え</li>
+            <li>体の向きをキープしたままサイドステップ</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="train-card">
+        <div class="train-hd"><div class="train-name">スクエアステップ</div><div class="train-tag">DF・MF向け</div></div>
+        <div class="train-body">
+          <div class="diagram-wrap">
+            <div class="diagram-label">動作イメージ</div>
+            <svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;">
+              <circle cx="90" cy="22" r="7" fill="#40916C"/>
+              <circle cx="210" cy="22" r="7" fill="#40916C"/>
+              <circle cx="90" cy="88" r="7" fill="#40916C"/>
+              <circle cx="210" cy="88" r="7" fill="#40916C"/>
+              <!-- スタート人物 -->
+              <circle cx="90" cy="88" r="5" fill="#1B4332"/>
+              <!-- 移動ルート：右→上→左→下 -->
+              <path d="M97,88 L203,88" fill="none" stroke="#52B788" stroke-width="2" stroke-dasharray="5,3"/>
+              <polygon points="200,84 210,88 200,92" fill="#52B788"/>
+              <path d="M210,81 L210,29" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-dasharray="5,3"/>
+              <polygon points="206,29 210,22 214,29" fill="#2D6A4F"/>
+              <path d="M203,22 L97,22" fill="none" stroke="#52B788" stroke-width="2" stroke-dasharray="5,3"/>
+              <polygon points="100,18 90,22 100,26" fill="#52B788"/>
+              <path d="M90,29 L90,81" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-dasharray="5,3"/>
+              <polygon points="86,81 90,88 94,81" fill="#2D6A4F"/>
+              <text x="90" y="105" font-size="9" fill="#555" font-family="sans-serif">右→上→左→下の順でまわる</text>
+            </svg>
+          </div>
+          <div class="train-point-label">なぜやるのか</div>
+          <ul class="train-points">
+            <li>前進・サイドステップ・後退を組み合わせることで、守備の基本動作パターンを体に覚えさせる</li>
+          </ul>
+          <div class="train-point-label" style="margin-top:8px;">セッティング / ポイント</div>
+          <ul class="train-points">
+            <li>マーカー間の距離：3〜5m（DF・MFの守備範囲を想定）</li>
+            <li>体の向きを常に前に保ったままサイドステップ</li>
+            <li>後退はバックペダルで（足をクロスしない）</li>
+            <li>各コーナーは内側の足で踏み込んで方向転換</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">参考文献</div>
+      <a class="ref-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5962722/" target="_blank">Reactive Agility & Change of Direction Speed in Junior Soccer Players — PMC</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ② アジリティー -->
+  <section class="section" id="agility">
+    <div class="section-hd">
+      <div class="sec-num">2</div>
+      <div>
+        <div class="sec-title">アジリティートレーニング</div>
+        <div class="sec-sub">ポジション別・場面別</div>
+      </div>
+    </div>
+
+    <div class="intro">
+      ステップワークが「動作の習得」なのに対し、アジリティーは<strong>判断と動作をセットで鍛える</strong>練習。ポジションによって求められる動きが異なるため、自分のポジションに合わせて選ぶ。
+    </div>
+
+    <table class="pos-table">
+      <thead>
+        <tr><th>ポジション</th><th>求められるアジリティーの特性<span style="font-size:9px;font-weight:400;opacity:0.7;margin-left:8px;">（FA Premier Leagueポジション別身体要求研究 / Sports Medicine 2024システマティックレビュー・178研究をもとに作成）</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>GK</td><td>横への一歩目の爆発力・反応速度。短距離の瞬発力が核心。</td></tr>
+        <tr><td>CB</td><td>後退しながらのポジション調整・空中戦の準備。速さより位置取りの精度。</td></tr>
+        <tr><td>SB</td><td>縦への対応と切り返しが頻繁。縦・横の両方向への素早い対応。</td></tr>
+        <tr><td>MF</td><td>全ポジション中、最も総移動距離が長い。一試合を通じた持続的な方向転換能力。</td></tr>
+        <tr><td>FW</td><td>守備プレスからの切り返し・裏への動き出し。短距離の爆発的な方向転換。</td></tr>
+      </tbody>
+    </table>
+    <div class="pos-ref">（論文参考：PMC3778701 / PMC11561100）</div>
+
+    <div class="train-list">
+
+      <div class="train-card">
+        <div class="train-hd"><div class="train-name">プロアジリティ（5-10-5）</div><div class="train-tag">SB・FW・CB向け</div></div>
+        <div class="train-body">
+          <div class="diagram-wrap">
+            <div class="diagram-label">動作イメージ</div>
+            <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;">
+              <circle cx="50" cy="50" r="7" fill="#40916C"/>
+              <circle cx="150" cy="50" r="7" fill="#1B4332"/>
+              <circle cx="250" cy="50" r="7" fill="#40916C"/>
+              <text x="90" y="46" font-size="9" fill="#bbb" font-family="sans-serif">← 5m →</text>
+              <text x="173" y="46" font-size="9" fill="#bbb" font-family="sans-serif">← 5m →</text>
+              <path d="M150,42 Q150,18 58,18 Q50,18 50,42" fill="none" stroke="#52B788" stroke-width="2"/>
+              <polygon points="47,42 53,42 50,50" fill="#52B788"/>
+              <path d="M50,58 Q50,80 242,80 Q250,80 250,58" fill="none" stroke="#1B4332" stroke-width="2.5"/>
+              <polygon points="247,58 253,58 250,50" fill="#1B4332"/>
+              <text x="70" y="15" font-size="9" fill="#52B788" font-family="sans-serif">① 左へ5m</text>
+              <text x="115" y="88" font-size="9" fill="#1B4332" font-family="sans-serif">② 右へ10m → ゴール</text>
+            </svg>
+          </div>
+          <div class="train-point-label">場面 / ポイント</div>
+          <ul class="train-points">
+            <li>相手についていく・置いていかれた時の戻り</li>
+            <li>切り返しの瞬間、<strong>内側の足で踏み込んで</strong>方向転換</li>
+            <li>重心を低く落として体が流れないように</li>
+            <li>SB：縦への対応、FW：プレス後の切り返し、CB：空中戦後の戻りに活用</li>
+          </ul>
+          <div style="font-size:11px;color:var(--gray);margin-bottom:6px;">↓ 動きのイメージはこちらで確認（解説より実際の動作に注目）</div><a class="yt-link" href="https://www.youtube.com/watch?v=qYDXaXRodWc" target="_blank">Pro Agility 5-10-5 — SKLZ（参考動画）</a>
+        </div>
+      </div>
+
+      <div class="train-card">
+        <div class="train-hd"><div class="train-name">T字ドリル</div><div class="train-tag">全員</div></div>
+        <div class="train-body">
+          <div class="diagram-wrap">
+            <div class="diagram-label">動作イメージ</div>
+            <svg viewBox="0 0 300 115" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;">
+              <!-- T字コーン配置：上1 中1 左右2 -->
+              <circle cx="150" cy="18" r="7" fill="#1B4332"/>
+              <circle cx="70" cy="78" r="7" fill="#40916C"/>
+              <circle cx="150" cy="78" r="7" fill="#40916C"/>
+              <circle cx="230" cy="78" r="7" fill="#40916C"/>
+              <!-- T字構造線 -->
+              <line x1="70" y1="78" x2="230" y2="78" stroke="#ccc" stroke-width="1.5"/>
+              <line x1="150" y1="18" x2="150" y2="78" stroke="#ccc" stroke-width="1.5"/>
+              <!-- ① 前進（下→上） -->
+              <path d="M150,85 Q150,100 155,55 Q155,25 150,25" fill="none" stroke="#52B788" stroke-width="2"/>
+              <polygon points="146,25 150,18 154,25" fill="#52B788"/>
+              <!-- ② 左サイドステップ（上→中→左） -->
+              <path d="M143,18 Q120,18 115,55 Q112,68 77,75" fill="none" stroke="#2D6A4F" stroke-width="2"/>
+              <polygon points="73,72 70,78 77,79" fill="#2D6A4F"/>
+              <!-- ③ 右サイドステップ（左→右） -->
+              <path d="M77,72 Q100,65 143,68 Q180,68 223,72" fill="none" stroke="#52B788" stroke-width="2"/>
+              <polygon points="220,68 230,72 221,76" fill="#52B788"/>
+              <!-- ④ バックペダル（右→中→下） -->
+              <path d="M223,78 Q200,90 155,92 Q152,95 150,92" fill="none" stroke="#aaa" stroke-width="1.5" stroke-dasharray="4,2"/>
+              <text x="25" y="110" font-size="9" fill="#555" font-family="sans-serif">①前進 ②左サイド ③右サイド ④バックペダル</text>
+            </svg>
+          </div>
+          <div class="train-point-label">場面 / ポイント</div>
+          <ul class="train-points">
+            <li>前後左右の切り替えが必要な守備局面全般</li>
+            <li>サイドステップ中は足をクロスせず、体の向きを前に保つ</li>
+            <li>各コーナーの切り返しは内側の足で踏み込む</li>
+            <li>GK：横の反応、MF：プレス方向転換、CB：マーク対応に応用</li>
+          </ul>
+          <a class="yt-link" href="https://www.youtube.com/watch?v=k7xUw9Sjf-c" target="_blank">T Test — NSCA（参考動画）</a>
+        </div>
+      </div>
+
+      <div class="train-card">
+        <div class="train-hd"><div class="train-name">バックペダル → ターン → スプリント</div><div class="train-tag">CB・SB向け</div></div>
+        <div class="train-body">
+          <div class="diagram-wrap">
+            <div class="diagram-label">動作イメージ</div>
+            <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;">
+              <circle cx="60" cy="45" r="7" fill="#1B4332"/>
+              <circle cx="240" cy="45" r="7" fill="#40916C"/>
+              <path d="M230,37 Q150,18 70,37" fill="none" stroke="#52B788" stroke-width="2"/>
+              <polygon points="70,33 63,37 70,41" fill="#52B788"/>
+              <circle cx="63" cy="45" r="13" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <path d="M70,53 Q150,72 230,53" fill="none" stroke="#1B4332" stroke-width="2.5"/>
+              <polygon points="228,49 238,53 229,57" fill="#1B4332"/>
+              <text x="88" y="15" font-size="9" fill="#52B788" font-family="sans-serif">① バックペダル</text>
+              <text x="88" y="80" font-size="9" fill="#1B4332" font-family="sans-serif">② ターン → スプリント</text>
+            </svg>
+          </div>
+          <div class="train-point-label">場面 / ポイント</div>
+          <ul class="train-points">
+            <li>裏へ抜け出されそうな場面での追走・カバー</li>
+            <li>ターン前の最後の一歩を小さくするとスムーズ</li>
+            <li>ターン中も前へのモメンタムを途切れさせない</li>
+            <li>CB：縦パス対応、SB：裏抜けカバーに直結</li>
+          </ul>
+          <a class="yt-link" href="https://www.youtube.com/watch?v=efQLNVcbacY" target="_blank">Backpedal to Sprint Drill（参考動画）</a>
+        </div>
+      </div>
+
+      <div class="train-card">
+        <div class="train-hd"><div class="train-name">コーン折り返しダッシュ</div><div class="train-tag">MF・FW向け</div></div>
+        <div class="train-body">
+          <div class="diagram-wrap">
+            <div class="diagram-label">動作イメージ</div>
+            <svg viewBox="0 0 320 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;">
+              <!-- コーン3つ横一列 -->
+              <circle cx="40" cy="65" r="8" fill="#1B4332"/>
+              <circle cx="180" cy="65" r="8" fill="#40916C"/>
+              <circle cx="290" cy="65" r="8" fill="#40916C"/>
+              <!-- 距離ラベル -->
+              <text x="85" y="40" font-size="9" fill="#aaa" font-family="sans-serif">← 10〜15m →</text>
+              <text x="220" y="40" font-size="9" fill="#aaa" font-family="sans-serif">← 10m →</text>
+              <!-- コーンラベル -->
+              <text x="18" y="86" font-size="9" fill="#1B4332" font-weight="bold" font-family="sans-serif">スタート</text>
+              <text x="155" y="86" font-size="9" fill="#555" font-family="sans-serif">折り返し①</text>
+              <text x="265" y="86" font-size="9" fill="#555" font-family="sans-serif">折り返し②</text>
+              <!-- ①スタート→折り返し① (上ライン) -->
+              <line x1="49" y1="52" x2="172" y2="52" stroke="#52B788" stroke-width="2.5"/>
+              <polygon points="169,47 180,52 169,57" fill="#52B788"/>
+              <text x="98" y="46" font-size="10" fill="#52B788" font-weight="bold" font-family="sans-serif">①</text>
+              <!-- ②折り返し①→スタートに戻る (上ライン) -->
+              <line x1="172" y1="44" x2="49" y2="44" stroke="#2D6A4F" stroke-width="2"/>
+              <polygon points="52,39 40,44 52,49" fill="#2D6A4F"/>
+              <text x="98" y="38" font-size="10" fill="#2D6A4F" font-weight="bold" font-family="sans-serif">②</text>
+              <!-- ③スタート→折り返し② (下ライン) -->
+              <line x1="49" y1="78" x2="282" y2="78" stroke="#52B788" stroke-width="2.5"/>
+              <polygon points="279,73 290,78 279,83" fill="#52B788"/>
+              <text x="155" y="97" font-size="10" fill="#52B788" font-weight="bold" font-family="sans-serif">③</text>
+              <!-- ④折り返し②→スタートに戻る (下ライン) -->
+              <line x1="282" y1="86" x2="49" y2="86" stroke="#2D6A4F" stroke-width="2"/>
+              <polygon points="52,81 40,86 52,91" fill="#2D6A4F"/>
+              <text x="155" y="103" font-size="10" fill="#2D6A4F" font-weight="bold" font-family="sans-serif">④</text>
+              <text x="15" y="122" font-size="9" fill="#555" font-family="sans-serif">①②：近い折り返し往復 → ③④：遠い折り返し往復</text>
+            </svg>
+          </div>
+          <div class="train-point-label">場面 / ポイント</div>
+          <ul class="train-points">
+            <li>必要スペース：約20〜25m（縦）× 1m（幅）</li><li>プレスに行く・戻るの切り替えを繰り返す場面</li>
+            <li>コーンに近づく手前から減速し始める（止まらず切り返す）</li>
+            <li>内側の足で踏み込んでターン、外側の足で蹴り出す</li>
+            <li>MF：攻守の切り替え、FW：プレス時の戻りに直結</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">参考文献</div>
+      <a class="ref-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3778701/" target="_blank">Physical Demands of Different Positions in FA Premier League Soccer — PMC</a>
+      <a class="ref-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11561100/" target="_blank">Playing Position & Physical Demands Systematic Review — PMC 2024</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ③ ふくらはぎ -->
+  <section class="section" id="cramp">
+    <div class="section-hd">
+      <div class="sec-num">3</div>
+      <div>
+        <div class="sec-title">ふくらはぎが攣る原因と対策</div>
+        <div class="sec-sub">練習では攣らないのに試合だけ攣る選手へ</div>
+      </div>
+    </div>
+
+    <div class="mech-box">
+      <div class="mech-title">なぜ攣るのか ― 神経筋疲労理論</div>
+      <div class="mech-text">
+        「水分不足が原因」と思われがちだが、現在のスポーツ科学では<strong>「神経筋の疲労による誤作動」</strong>が主な原因と考えられている。<br><br>
+        筋肉が疲労すると、「縮め」という信号（筋紡錘）が強くなり、「力を抜け」という信号（ゴルジ腱器官）が弱くなる。このバランスが崩れることで、意図せず筋肉が収縮し続け、攣りが起きる。
+      </div>
+    </div>
+
+    <div class="mech-box">
+      <div class="mech-title">「試合だけ攣る」理由</div>
+      <div class="mech-text">
+        試合では緊張・プレッシャーで<strong>交感神経が過剰に働き</strong>、筋肉の緊張が高まった状態でプレーすることになる。練習と同じ感覚でも、体への負担は別物。<br><br>
+        また、<strong>股関節やお尻の筋肉が十分に使えていないと、ふくらはぎへの負荷が集中しやすい</strong>。試合強度が上がるほど、この偏りが攣りとして現れやすくなる。
+      </div>
+    </div>
+
+    <div class="cm-list">
+      <div style="font-size:12px; font-weight:700; color:var(--gd); letter-spacing:0.04em; padding: 4px 0;">予防のための対策</div>
+
+      <div class="cm-item">
+        <div class="cm-icon">🍑</div>
+        <div>
+          <div class="cm-title">お尻・股関節を使えるようにする</div>
+          <div class="cm-desc">ヒップヒンジ・シングルレッグRDL（片脚ルーマニアンデッドリフト）で臀部の出力を高める。ふくらはぎへの集中負荷を分散させるのが根本的な対策。</div>
+        </div>
+      </div>
+
+      <div class="cm-item">
+        <div class="cm-icon">🔄</div>
+        <div>
+          <div class="cm-title">試合前・ハーフタイムに股関節とふくらはぎをほぐす</div>
+          <div class="cm-desc">試合前のウォームアップと、ハーフタイムにも股関節回し・レッグスイングと、ふくらはぎの軽いストレッチを入れる。後半開始直後に攣るケースはハーフタイムの動きが止まることも原因のひとつ。</div>
+        </div>
+      </div>
+
+      <div class="cm-item">
+        <div class="cm-icon">📐</div>
+        <div>
+          <div class="cm-title">ランニングフォームの見直し</div>
+          <div class="cm-desc">接地が体の前方になりすぎると、ふくらはぎへの衝撃が増す。体の真下に近い位置で接地し、お尻で地面を押すイメージを持つ。</div>
+        </div>
+      </div>
+
+      <div class="cm-item">
+        <div class="cm-icon">😮‍💨</div>
+        <div>
+          <div class="cm-title">試合前の過緊張を和らげる</div>
+          <div class="cm-desc">緊張による筋肉の余計な力みが攣りを引き起こしやすい。ウォームアップ中に体をほぐしながら、意識的に力を抜く動作（シェイクアウト・全身脱力）を入れる。</div>
+        </div>
+      </div>
+
+      <div class="cm-item">
+        <div class="cm-icon">🎯</div>
+        <div>
+          <div class="cm-title">練習・練習試合から試合と同じ感覚で臨む</div>
+          <div class="cm-desc">試合だけ攣る選手は、練習と試合で体の使い方・緊張状態が大きく異なることが多い。練習や練習試合でも本番と同じ強度・集中度で取り組む習慣をつけることで、試合での体への負担の差を小さくする。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ref-box">
+      <div class="ref-label">参考文献</div>
+      <a class="ref-link" href="https://www.physio-pedia.com/Exercise-Associated_Muscle_Cramps" target="_blank">Exercise-Associated Muscle Cramps — Physiopedia</a>
+      <a class="ref-link" href="https://www.gssiweb.org/docs/default-source/sse-docs/maughan_sse_200_final.pdf" target="_blank">Exercise-Associated Muscle Cramps — GSSI Sports Science Exchange</a>
+      <a class="ref-link" href="https://www.zmescience.com/medicine/stop-blaming-your-muscle-cramps-on-dehydration-new-research-points-to-the-ground-beneath/" target="_blank">Stop Blaming Cramps on Dehydration — ZME Science 2025</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2026 フィジカルコンディショニング ／ 川越コーチ・涼太朗コーチ</footer>
+
+</body>
+</html>
